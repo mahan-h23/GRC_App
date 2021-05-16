@@ -61,6 +61,3 @@ class Mitigation(models.Model):
     def __str__(self):
         return self.mitigation
 
-
-class Test(models.Model):
-    jason = models.TextField
