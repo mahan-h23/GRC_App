@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html>
+
+<head>
+	<title>Scatter Chart</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+
+<body>
+	<div style="width:25%;">
+  <canvas id="myChart"></canvas>
+</div>
+
+	<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var X_AXIS = 'Median Household Income, USD';
+new Chart(ctx, {
+  type: 'scatter',
+
+  data: {
+      xLabels: ["January", "February", "March", "April", "May", "June", "July"],
+    yLabels: ['Request Added', 'Request Viewed', 'Request Accepted', 'Request Solved', 'Solving Confirmed'],
+    datasets: [{
+
+      label: 'Scatter Dataset',
+      backgroundColor: 'green',
+      data: [{
+        x: -10,
+        y: 0
+      }, {
+        x: 0,
+        y: 10
+      }, {
+        x: 10,
+        y: 5
+      }],
+
+    },
+        {
+            label: 'Scatter Dataset',
+      backgroundColor: 'red',
+      data: [{
+        x: -1,
+        y: 0
+      }, {
+        x: 1,
+        y: 10
+      }, {
+        x: 10,
+        y: 1
+      }],
+        }
+
+    ]
+  },
+  options: {
+
+    scales: {
+      xAxes: [{
+
+        type: 'linear',
+        position: 'bottom'
+      }]
+    }
+  }
+});
+
+	</script>
+</body>
+
+</html>
