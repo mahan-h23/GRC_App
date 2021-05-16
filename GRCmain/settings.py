@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'risks_mitigations',
+    'indicators'
 
 ]
 

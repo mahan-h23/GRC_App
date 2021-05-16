@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    {% load static %}
+
+
+  {% include 'riskadd/base/base.html' %}
+
+
+</head>
+
+<body class="">
+<!-- navbar and sidebar -->
+{% include 'riskadd/base/sidenav.html' %}
+      <!-- End Navbar -->
+
+<!-- header for 4 box -->
+      {% include 'riskadd/base/boxes.html' %}
+
+<!-- test html -->
+
+
+
+<div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="header-title" style="text-align: center">
+                        <th class="card-header">
+                          Added By
+                        </th>
+                        <th class="card-header">
+                          Risk Issue
+                        </th>
+                        <th class="card-header">
+                          Description
+                        </th>
+                        <th class="card-header">
+                          Inherent Rating
+                        </th> <th class="card-header">
+                          Recidual Rating
+                        </th>
+
+                      </thead>
+                      <tbody>
+
+
+                          <tr>
+
+                              <td style="text-align: center">
+                         {{ risk.createdBy }}
+                              </td>
+                              <td style="text-align: center">
+                         {{ risk.riskname }}
+                              </td>
+                              <td style="text-align: center">
+                         {{ risk.riskdiscription }}
+                              </td><td style="text-align: center">
+                         {{ risk.inherent }}
+                              </td><td style="text-align: center">
+                         {{ risk.recidual }}
+
+                          </tr>
+
+
+                      </tbody>
+
+                    </table>
+
+                  </div>
+</div>
+
+
+<!-- sortable table
+
+              <div class="card">
+                <div class="card-header ">
+                  <h4 class="card-title">Tech Risks Overview</h4>
+                  <p class="card-category">Risk assessment of Tech Division</p>
+                </div>
+                  <div class="card-body table-hover">
+                <table id="dtVerticalScrollExample3" class="table table-striped table-bordered table-sm" cellspacing="0"
+width="100%">
+  <thead>
+    <tr>
+
+      <th class="th-sm"> Key Risk issue
+      </th>
+      <th class="th-sm"> Description
+      </th>
+      <th class="small"><i class="fa fa-arrows-v" aria-hidden="true">Inherent Rating</i>
+      <th class="th-sm"><i class="fa fa-arrows-v" aria-hidden="true">Residual Rating</i>
+      <th class="th-sm"><i class="fa fa-arrows-v" aria-hidden="true">Target Rating</i>
+      <th class="th-sm"><i class="fa fa-arrows-v" aria-hidden="true">Date added</i>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Resources capacity risk (Developers- for new business product development)</td>
+      <td>Risk of resources capacity for developing new APPs, products, business lines in line with the company's strategic objectives and expansion  plans. </td>
+      <td bgcolor="red">25</td>
+      <td bgcolor="ff8c00">16</td>
+      <td bgcolor="yellow">6</td>
+      <td >2011/04/25</td>
+
+    </tr>
+    <tr>
+      <td>Cyber security Risk</td>
+      <td>Cyber attacks that can breach company information or networks.</td>
+      <td bgcolor="red">25</td>
+      <td  bgcolor="#ff8c00">15</td>
+      <td  bgcolor="yellow">9</td>
+      <td>2011/07/25</td>
+    </tr>
+    <tr>
+      <td>Payment security risks(DigiPay)</td>
+      <td>Payment security can be considered as providing rules, regulations and security measures to protect customers’ privacy, data and the money involved</td>
+      <td  bgcolor="red">25</td>
+      <td bgcolor="#ff8c00">15</td>
+      <td bgcolor="yellow">9</td>
+      <td >2009/01/12</td>
+    </tr>
+    <tr>
+      <td>Lack of consolidated and agile change management</td>
+      <td>Possibility of inadequate or insufficient change management process that can cause change failures due to several reasons such as  human error </td>
+      <td bgcolor="#ff8c00">16</td>
+      <td bgcolor="yellow">12</td>
+      <td bgcolor="yellow">6</td>
+      <td>2012/03/29</td>
+    </tr>
+    <tr>
+      <td>Servers capacity risk (for new business product development)</td>
+      <td>Lack of server capacity and infrastructure capacity for developing new APPs , products, business lines in line with strategies that even might affect the main platform because of overloaded traffic on servers </td>
+      <td bgcolor="red">25</td>
+      <td bgcolor="yellow">12</td>
+      <td bgcolor="#7cfc00">4</td>
+      <td >2008/11/28</td>
+    </tr>
+    <tr>
+      <td>Internal Servers failure and crash risk</td>
+      <td>The possibility of servers might be out of order and irresponsible for services and the possibility of being out of access for the customers to reach the services.</td>
+      <td bgcolor="red">25</td>
+      <td bgcolor="yellow">10</td>
+      <td bgcolor="#7cfc00">4</td>
+      <td>2012/12/02</td>
+    </tr>
+    <tr>
+      <td>BI Data warehouse failure risk</td>
+      <td>When the BI department wants to generate a report they have to access the Data such as sales data, delivery time and etc,</td>
+      <td bgcolor="#ff8c00">15</td>
+      <td bgcolor="yellow">8</td>
+      <td bgcolor="#7cfc00">3</td>
+      <td>2012/08/06</td>
+    </tr>
+    <tr>
+      <td>Data Loss risk</td>
+      <td>Possibility of data loss.</td>
+      <td bgcolor="#ff8c00">15</td>
+      <td bgcolor="yellow">6</td>
+      <td bgcolor="yellow">6</td>
+      <td>2010/10/14</td>
+    </tr>
+    <tr>
+      <td>Website domain, certificate, IP ownership and extension risk</td>
+      <td>Risk of having multiple login info for domains, certificates, and IPs</td>
+      <td bgcolor="#ff8c00">15</td>
+      <td bgcolor="yellow">8</td>
+      <td bgcolor="#7cfc00">3</td>
+      <td>2009/09/15</td>
+    </tr>
+
+
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Key Risk Issue
+      </th>
+      <th>Description
+      </th>
+      <th>Inherent Rating
+      </th>
+         <th>Residual Rating
+      </th>
+         <th>Target Rating
+      </th>
+      <th>Date added
+      </th>
+    </tr>
+  </tfoot>
+</table>
+                    </div>
+            </div>
+
+
+-->
+
+
+
+
+
+
+<!-- Adds from other -->
+
+<div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="header-title" style="text-align: center">
+                        <th class="card-header">
+                          Mitigation
+                        </th>
+                        <th class="card-header">
+                          Due Date
+                        </th>
+
+                      </thead>
+                      <tbody>
+
+                      {% for field in mitigation %}
+                          <tr>
+                          {% for x in field %}
+                              <td style="text-align: center">
+                              {{ x }}
+                              </td>
+                              {% endfor %}
+                          </tr>
+
+                      {% endfor %}
+                      </tbody>
+
+                    </table>
+                  <a href="{% url 'getfile' qid %}">Get excel file</a>
+                  </div>
+</div>
+
+
+
+
+
+
+
+      <!-- Footer -->
+{% include 'base/footer.html' %}
+
+<!-- core javascript -->
+ {% include 'base/corejs.html' %}
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function() {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function() {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function() {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function() {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+          } else {
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+            setTimeout(function() {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+  </script>
+
+
+
+<!-- Nabaaar -->
+<script src="/static/asset3/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/static/asset3/vendor/select2/select2.min.js"></script>
+    <script src="/static/asset3/vendor/datepicker/moment.min.js"></script>
+    <script src="/static/asset3/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="/static/asset3/js/global.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#dtVerticalScrollExample').DataTable({
+    "scrollY": "200px",
+    "scrollCollapse": true,
+    });
+    $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+    $('#dtVerticalScrollExample3').DataTable({
+    "scrollY": "200px",
+    "scrollCollapse": true,
+    });
+    $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+</body>
+
+</html>
