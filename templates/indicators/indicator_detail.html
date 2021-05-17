@@ -10,64 +10,7 @@
 
   {% include 'riskadd/base/base.html' %}
 
-<style>
-    .button2 {
-  background-color: #004A7F;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border: none;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-
-  font-size: 20px;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  -webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;
-}
-    .button3 {
-  background-color: #004A7F;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border: none;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-
-  font-size: 20px;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-
-}
-@-webkit-keyframes glowing {
-  0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
-  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-}
-
-@-moz-keyframes glowing {
-  0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-  50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
-  100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-}
-
-@-o-keyframes glowing {
-  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-}
-
-@keyframes glowing {
-  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-}
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 <body class="">
@@ -79,111 +22,107 @@
       {% include 'base/boxes.html' %}
 
 <!-- test html -->
-
 <div class="col">
-    <div class="card">
-        <div class="card-header card-header-rose">
-            <h3>Indicators</h3>
-        </div>
-        <div class="container-fluid mt-auto align-content-xl-center">
-            <div class="row">
-                <div class="col-xl-8 mb-5 mb-xl-2 ">
-                      <div class="card bg-gradient-white  ">
-                          <div class="card-header bg-transparent">
-                             <div class="row align-items-center">
-                                <div class="col">
-                                 <h6 class="text-uppercase text-gray ls-1 mb-1"></h6>
-                                    <h4 class="text-dark mb-0">Risks based on Divisions </h4>
-{#                                    <ul class="list-group list-group-flush">#}
-{#                                      <li class="list-group-item"><a class="button2" href="#">Seller NPS </a></li>#}
-{#                                      <li class="list-group-item"><a class="button3" href="#">Customer NPS </a></li>#}
-{#                                      <li class="list-group-item"><a class="button3" href="#">PC1 Ratio </a></li>#}
-{#                                      <li class="list-group-item"><a class="button3" href="#">EBITA Ratio </a></li>#}
-{##}
-{#                                        </ul>#}
-                                    <div class="table-responsive-xl">
-                    <table class="table">
-                      <thead class="text-primary text-center ">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Division
-                        </th>
-                        <th>
-                          Indicator
-                        </th>
-
-                      </thead>
-                      <tbody class="text-dark text-center">
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                            <td>
-                            Commercial
-                          </td>
-                          <td>
-                            <a class="button2" href="{% url 'detailindicator' %}">Seller NPS </a>
-                          </td>
-
-
-                        </tr><tr>
-                          <td>
-                            2
-                          </td> <td>
-                            Finance
-                          </td>
-                          <td>
-                            <a class="button3" href="#">EBITA </a>
-                          </td>
-
-
-                        </tr><tr>
-                          <td>
-                            3
-                          </td>
-                            <td>
-                                Marketing
-                            </td>
-                          <td>
-                            <a class="button3" href="#">Customer NPS </a>
-                          </td>
-
-
-                        </tr><tr>
-                          <td>
-                           4
-                          </td>
-                            <td>
-                                HR
-                            </td>
-                          <td>
-                            <a class="button3" href="#">Fire Incident </a>
-                          </td>
-
-
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-
-
-                                </div>
-                             </div>
-                          </div>
-                      </div>
-
-
+              <div class="card">
+                <div class="card-header card-header-rose">
+                  <h4 class="card-title">Report</h4>
+                  <p class="card-category"> </p>
                 </div>
+                 <div class="container-fluid mt-auto">
+
+                       <div class="container-fluid mt-auto">
+
+      <div class="row">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card bg-gradient-white  ">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-gray ls-1 mb-1"></h6>
+                  <h4 class="text-dark mb-0">Seller NPS Report</h4>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card-body">
+              <!-- Chart-->
+
+             <canvas id="line-chart" height="200"></canvas>
+
 
             </div>
+          </div>
         </div>
-    </div>
-</div>
+
+        <div class="col-xl-4">
+          <div class="card shadow">
+
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Sellers satisfaction risk
+</h6>
+                  <h2 class="mb-0"></h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" >
+              <!-- Chart -->
 
 
+
+          <p>Possibility of not having proper seller satisfaction and also unfair activities causing seller dissatisfaction. Seller churn rate increase will have several negative impacts on market share and competitive advantage of DK.
+</p>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+            </div>
+          </div>
+
+
+<script>
+
+   new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: ['مهر 98','اسفند 98','خرداد99','تیر99','مرداد99','شهریور99','مهر99','آبان99','آذر99','دی99','اسفند99'],
+    datasets: [{
+        data: [24,12,6,1,2,2,6.3,12,5,2,-44],
+        label: "Actual",
+        borderColor: "#3e95cd",
+        fill: false
+      },
+
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Seller NPS'
+    }
+  }
+});
+
+  </script>
 
 
 

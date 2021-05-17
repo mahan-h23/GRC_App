@@ -18,7 +18,7 @@ from django.urls import path , include
 from mainpage import urls as urlmain
 from accounts import urls as urlaccount
 from risks_mitigations import urls as riskurls
-
+from indicators import urls as indicatorsurls
 from . import settings
 from django.conf.urls.static import static
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(urlmain)),
     path('account/',include(urlaccount)),
+    path('indicators/',include(indicatorsurls)),
 
     path('add/',include(riskurls))
 

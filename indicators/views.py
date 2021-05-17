@@ -5,4 +5,8 @@ from django.shortcuts import render
 
 
 def viewList(request):
-    return render(request,'')
+    return render(request,'indicators/indicatorsList.html')
+
+
+def detailVew(request):
+    return render(request,'indicators/indicator_detail.html')
