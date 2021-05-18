@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'risks_mitigations',
+    'information',
+    'simple_history',
     'indicators'
 
 ]
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'GRCmain.urls'
@@ -86,7 +89,7 @@ WSGI_APPLICATION = 'GRCmain.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite4',
+        'NAME': BASE_DIR / 'db.sqlite5',
     }
 }
 
