@@ -1,12 +1,12 @@
 # GRC_App
 URLS are <br>
 local/info/{<br>
-            urlpatterns = [
-    path('corpo/create', createCorporate, name='createcorpo'),
-    path('corpo/list/', listCorporate, name='listcorpo'),
-    path('corpo/delete/<int:pk>', deleteCorporate, name='deletecorpo'),
-    path('corpo/update/<int:pk>', updateCorporate, name='updatecorpo'),
-    path('corpo/detail/<int:pk>', detailCorporate, name='detailcorpo'),
+            urlpatterns = [<br>
+    path('corpo/create', createCorporate, name='createcorpo'),<br>
+    path('corpo/list/', listCorporate, name='listcorpo'),<br>
+    path('corpo/delete/<int:pk>', deleteCorporate, name='deletecorpo'),<br>
+    path('corpo/update/<int:pk>', updateCorporate, name='updatecorpo'),<br>
+    path('corpo/detail/<int:pk>', detailCorporate, name='detailcorpo'),<br>
 
     ]
 }
