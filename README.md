@@ -1,6 +1,6 @@
 # GRC_App
-URLS are 
-local/info/{
+URLS are <br>
+local/info/{<br>
             urlpatterns = [
     path('corpo/create', createCorporate, name='createcorpo'),
     path('corpo/list/', listCorporate, name='listcorpo'),
