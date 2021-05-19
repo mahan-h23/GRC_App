@@ -22,6 +22,9 @@ def listCorporate(request):
     corporate = CorprateObjective.objects.filter(flag=True)
     context['corpo'] = corporate
 
+
+
+
     return render(request, 'information/corprate/list.html', context)
 
 
@@ -34,6 +37,7 @@ def deleteCorporate(request, pk):
         CorprateObjective.objects.filter(id=pk).update(flag=False)
         return redirect('listcorpo')
     context['corpo']=corponame
+
 
     return render(request, 'information/corprate/delete.html', context)
 

@@ -32,6 +32,8 @@
 
                     {% for field in corpo %}
                     {{ field }}
+                 <a href="{% url 'updatecorpo' field.id %}">Update</a>
+                <a href="{% url 'deletecorpo' field.id %}">Delete</a>
                         <br>
                     {% endfor %}
 

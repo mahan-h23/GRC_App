@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class CorprateForm(ModelForm):
     class Meta:
         model = CorprateObjective
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'name': _('Corporate Objective:'),
             'flag': _('Not Hidden:')
@@ -16,7 +16,7 @@ class CorprateForm(ModelForm):
 class DivisionForm(ModelForm):
     class Meta:
         model = Division
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'division': _('Division:'),
             'flag': _('Not Hidden:')
@@ -26,7 +26,7 @@ class DivisionForm(ModelForm):
 class OwnerForm(ModelForm):
     class Meta:
         model = Owners
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'first_name': _('First Name:'),
             'last_name': _('Last Name:'),
@@ -39,7 +39,7 @@ class OwnerForm(ModelForm):
 class BizKpiForm(ModelForm):
     class Meta:
         model = BizKPI
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'kpi': _('Biz KPI:'),
             'flag': _('Not Hidden:')
@@ -50,7 +50,7 @@ class BizKpiForm(ModelForm):
 class PrincipalForm(ModelForm):
     class Meta:
         model = PrincipalRisk
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'prNumber': _('Principal Number:'),
             'prShortTitile': _('Principal Short Title:'),
@@ -69,7 +69,7 @@ class PrincipalForm(ModelForm):
 class RiskForm(ModelForm):
     class Meta:
         model = Risk
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'createdBy': _('Added By:'),
             'corprateObjective': _('Corporate Objectives:'),
@@ -103,7 +103,7 @@ class RiskForm(ModelForm):
 class MitigationForm(ModelForm):
     class Meta:
         model = Mitigation
-        fields = '__all__'
+        exclude = ['flag']
         labels = {
             'risk': _('Related Risk:'),
             'mitigation': _('Mitigation:'),
