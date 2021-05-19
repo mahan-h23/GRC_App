@@ -13,7 +13,7 @@
 
 <body class="">
 <!-- navbar and sidebar -->
-{% include 'riskadd/base/sidenav.html' %}
+{% include 'base/sidenav.html' %}
 <!-- End Navbar -->
 
 <!-- header for 4 box -->
@@ -23,12 +23,19 @@
 
 <div class="card">
     <div class="card-header-rose">
-        <h2> Update </h2>
-    </div>
-<form method="post">
-    {% csrf_token %}
+        <h2> Delete </h2>
 
-</form>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+        Are you sure you want to delete {{ corpo }}?
+        </p>
+            <input class="btn-primary" type="submit" value="Yes">
+        <a href="{% url 'dash' %}">NO </a>
+    </form>
+
+
 </div>
 
 

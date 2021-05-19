@@ -21,11 +21,12 @@ from risks_mitigations import urls as riskurls
 from indicators import urls as indicatorsurls
 from . import settings
 from django.conf.urls.static import static
-
+from information import urls as infourls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(urlmain)),
+    path('info/',include(infourls)),
     path('account/',include(urlaccount)),
     path('indicators/',include(indicatorsurls)),
 
