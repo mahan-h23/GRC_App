@@ -13,7 +13,7 @@
 
 <body class="">
 <!-- navbar and sidebar -->
-{% include 'base/sidenav.html' %}
+{% include 'riskadd/base/sidenav.html' %}
 <!-- End Navbar -->
 
 <!-- header for 4 box -->
@@ -23,25 +23,18 @@
 
 <div class="card">
     <div class="card-header-rose">
-        <h2> Delete </h2>
+        <h2> Detail </h2>
 
     </div>
-    <form method="post">
-        {% csrf_token %}
-        <p>
-            Are you sure you want to delete {{ risk }}?
-        </p>
-        <p>
-            With These Mitigation:
-        </p>
-        {% for field in mitigations %}
-            {{ field }}
-        {% endfor %}
-        <input class="btn-primary" type="submit" value="Yes">
-        <a href="{% url 'dash' %}">NO </a>
-    </form>
-
-
+    {% for field in mitigations %}
+        {{ field.risk }}
+        {{ field }}
+        {{ field.initialDueDate }}
+        <a href="{% url 'detailrisk' field.risk_id %}">Risk Detail</a>
+        <a href="{% url 'detailmitigation' field.id %}">Mitigation Detail</a>
+        <a href="{% url 'updatemitigation' field.id %}">Update</a>
+        <a href="{% url 'deletemitigation' field.id %}">Delete</a>
+    {% endfor %}
 </div>
 
 

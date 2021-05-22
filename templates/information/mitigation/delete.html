@@ -29,14 +29,9 @@
     <form method="post">
         {% csrf_token %}
         <p>
-            Are you sure you want to delete {{ risk }}?
+            Are you sure you want to delete {{ mitigation }}?
         </p>
-        <p>
-            With These Mitigation:
-        </p>
-        {% for field in mitigations %}
-            {{ field }}
-        {% endfor %}
+
         <input class="btn-primary" type="submit" value="Yes">
         <a href="{% url 'dash' %}">NO </a>
     </form>

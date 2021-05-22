@@ -32,17 +32,17 @@ urlpatterns = [
     path('principal/update/<int:pk>', updatePrincipal, name='updateprincipal'),
     path('principal/detail/<int:pk>', detailPrincipal, name='detailprincipal'),
 
-    path('risk/create', createPrincipal, name='createriskl'),
-    path('risk/list/', listPrincipal, name='listrisk'),
-    path('risk/delete/<int:pk>', deletePrincipal, name='deleterisk'),
-    path('risk/update/<int:pk>', updatePrincipal, name='updaterisk'),
-    path('risk/detail/<int:pk>', detailPrincipal, name='detailrisk'),
+    path('risk/create', createRisk, name='createriskl'),
+    path('risk/list/', listRisk, name='listrisk'),
+    path('risk/delete/<int:pk>', deleteRisk, name='deleterisk'),
+    path('risk/update/<int:pk>', updateRisk, name='updaterisk'),
+    path('risk/detail/<int:pk>', detailRisk, name='detailrisk'),
 
-    path('mitigation/create/<int:pk>', createPrincipal, name='createmitigation'),
-    path('mitigation/list/', listPrincipal, name='listmitigation'),
-    path('mitigation/delete/<int:pk>', deletePrincipal, name='deletemitigation'),
-    path('mitigation/update/<int:pk>', updatePrincipal, name='updatemitigation'),
-    path('mitigation/detail/<int:pk>', detailPrincipal, name='detailmitigation'),
+    path('mitigation/create/<int:pk>', createMitigation, name='createmitigation'),
+    path('mitigation/list/', listMitigation, name='listmitigation'),
+    path('mitigation/delete/<int:pk>', deleteMitigation, name='deletemitigation'),
+    path('mitigation/update/<int:pk>', updateMitigation, name='updatemitigation'),
+    path('mitigation/detail/<int:pk>', detailMitigation, name='detailmitigation'),
 
 ]
 

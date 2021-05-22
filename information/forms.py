@@ -113,3 +113,6 @@ class MitigationForm(ModelForm):
             'initialDueDate': _('Initial Due Date:'),
             'flag': _('Not Hidden:')
         }
+    def __init__(self, *args, **kwargs):
+        super(ModelForm, self).__init__(*args, **kwargs)
+        self.fields['risk'].disabled = True

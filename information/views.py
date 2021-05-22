@@ -54,7 +54,7 @@ def updateCorporate(request, pk):
 
 def detailCorporate(request, pk):
     context = {}
-    corpo = CorprateObjective.objects.filter(id=pk).filter(flag=True)
+    corpo = CorprateObjective.objects.filter(id=pk, flag=True)
     context['corpo'] = corpo
 
     return render(request, 'information/corprate/detail.html', context)
@@ -113,7 +113,7 @@ def updateDivision(request, pk):
 
 def detailDivision(request, pk):
     context = {}
-    division = Division.objects.filter(id=pk).filter(flag=True)
+    division = Division.objects.filter(id=pk, flag=True)
     context['division'] = division
 
     return render(request, 'information/division/detail.html', context)
@@ -171,7 +171,7 @@ def updateOwner(request, pk):
 
 def detailOwner(request, pk):
     context = {}
-    owner = Owners.objects.filter(id=pk).filter(flag=True)
+    owner = Owners.objects.filter(id=pk, flag=True)
     context['owner'] = owner
 
     return render(request, 'information/owner/detail.html', context)
@@ -229,7 +229,7 @@ def updateBiz(request, pk):
 
 def detailBiz(request, pk):
     context = {}
-    biz = BizKPI.objects.filter(id=pk).filter(flag=True)
+    biz = BizKPI.objects.filter(id=pk, flag=True)
     context['biz'] = biz
 
     return render(request, 'information/bizkpi/detail.html', context)
@@ -287,7 +287,7 @@ def updatePrincipal(request, pk):
 
 def detailPrincipal(request, pk):
     context = {}
-    principal = PrincipalRisk.objects.filter(id=pk).filter(flag=True)
+    principal = PrincipalRisk.objects.filter(id=pk, flag=True)
     context['principal'] = principal
 
     return render(request, 'information/principal/detail.html', context)
@@ -315,7 +315,6 @@ def listRisk(request):
     risk = Risk.objects.filter(flag=True)
     context['risks'] = risk
 
-
     return render(request, 'information/risk/list.html', context)
 
 
@@ -327,6 +326,7 @@ def deleteRisk(request, pk):
 
     if request.method == "POST":
         Risk.objects.filter(id=pk).update(flag=False)
+        Mitigation.objects.filter(risk_id=pk).update(flag=False)
         return redirect('listrisk')
     context['risk'] = riskName
     context['mitigation'] = mitigation
@@ -338,18 +338,90 @@ def updateRisk(request, pk):
     context = {}
     risk = Risk.objects.get(id=pk)
     form = RiskForm(request.POST or None, instance=risk)
+    mitigation = Mitigation.objects.filter(risk_id=pk, flag=True)
 
     if form.is_valid():
         form.save()
-        return redirect('listprincipal')
+        return redirect('listrisk')
 
     context['form'] = form
+    context['mitigation'] = mitigation
     return render(request, 'information/risk/update.html', context)
 
 
 def detailRisk(request, pk):
     context = {}
-    principal = PrincipalRisk.objects.filter(id=pk).filter(flag=True)
-    context['principal'] = principal
+    risk = Risk.objects.filter(id=pk, flag=True)
+    mitigation = Mitigation.objects.filter(risk_id=pk, flag=True)
+    context['risk'] = risk
+    context['mitigation'] = mitigation
 
     return render(request, 'information/risk/detail.html', context)
+
+
+# --------------------------------------------------------------------------
+
+# Mitigation CRUD
+
+def createMitigation(request, pk):
+    context = {}
+    risk = Risk.objects.get(id=pk)
+    form = MitigationForm(request.POST or None, initial={'risk': risk})
+
+    if request.POST:
+        if 'btn1' in request.POST and form.is_valid():
+            form.save()
+            return redirect('listmitigation')
+        if 'btn2' in request.POST and form.is_valid():
+            form.save()
+
+    context['risk'] = risk
+    context['form'] = form
+
+    return render(request, 'information/mitigation/create.html', context)
+
+
+def listMitigation(request):
+    context = {}
+    risk = Risk.objects.filter(flag=True)
+    mitigations = Mitigation.objects.filter(flag=True)
+    context['risks'] = risk
+    context['mitigations'] = mitigations
+
+    return render(request, 'information/mitigation/list.html', context)
+
+
+def deleteMitigation(request, pk):
+    context = {}
+    mitigation = Mitigation.objects.get(id=pk)
+
+    if request.method == "POST":
+        Mitigation.objects.filter(id=pk).update(flag=False)
+        return redirect('listmitigation')
+
+    context['mitigation'] = mitigation
+
+    return render(request, 'information/mitigation/delete.html', context)
+
+
+def updateMitigation(request, pk):
+    context = {}
+    mitigation = Mitigation.objects.get(id=pk)
+    form = MitigationForm(request.POST or None, instance=mitigation)
+
+
+    if form.is_valid():
+        form.save()
+        return redirect('listmitigation')
+
+    context['form'] = form
+    context['mitigation'] = mitigation
+    return render(request, 'information/mitigation/update.html', context)
+
+
+def detailMitigation(request, pk):
+    context = {}
+    mitigation = Mitigation.objects.filter(id=pk, flag=True)
+    context['mitigation'] = mitigation
+
+    return render(request, 'information/mitigation/detail.html', context)
