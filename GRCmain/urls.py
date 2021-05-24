@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path, include
 from mainpage import urls as urlmain
 from accounts import urls as urlaccount
 from risks_mitigations import urls as riskurls
@@ -22,14 +22,15 @@ from indicators import urls as indicatorsurls
 from . import settings
 from django.conf.urls.static import static
 from information import urls as infourls
+from chartdata import urls as charturls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include(urlmain)),
-    path('info/',include(infourls)),
-    path('account/',include(urlaccount)),
-    path('indicators/',include(indicatorsurls)),
+                  path('admin/', admin.site.urls),
+                  path('', include(urlmain)),
+                  path('info/', include(infourls)),
+                  path('account/', include(urlaccount)),
+                  path('indicators/', include(indicatorsurls)),
+                  path('apis/', include(charturls)),
+                  path('add/', include(riskurls))
 
-    path('add/',include(riskurls))
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

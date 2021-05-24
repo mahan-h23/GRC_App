@@ -11,12 +11,14 @@ def viewdash(request):
     context = {}
     profilepic = ProfileInfo.objects.all()
     context['pics'] = profilepic
+    context['nbar'] = 'dashboard'
 
 
 
     return render(request,'examples/dashboard.html',context)
 
-
+def testView(request):
+    return render(request,'main/dashboard.html')
 
 def techview(request):
     return render(request,'division/tech.html')
@@ -53,3 +55,9 @@ def cxview(request):
 
 def crossview(request):
     return render(request,'division/cross.html')
+
+
+def viewDashboard(request):
+    context = {}
+    context['nbar'] = 'dashboard'
+    return render(request,'main/dashboard.html',context)

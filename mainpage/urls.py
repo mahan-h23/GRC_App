@@ -16,5 +16,7 @@ urlpatterns = [
     path('operation/', operationview,name = 'operation'),
     path('cross/', crossview,name = 'cross'),
     path('hr/', hrview,name = 'hr'),
+    path('dashboard/',viewDashboard , name = 'dashboard'),
+    path('test/',testView)
 
 ]

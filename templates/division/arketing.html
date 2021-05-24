@@ -321,7 +321,7 @@
               <div class="row align-items-center">
                 <div class="col">
                   <h6 class="text-uppercase text-gray ls-1 mb-1"></h6>
-                  <h4 class="text-dark mb-0">Marketing Mitigations</h4>
+                  <h4 class="text-dark mb-0">Marketing Risks</h4>
 
                   </ul>
                 </div>
@@ -398,7 +398,7 @@ width="100%">
       <td>Brand Image Risk</td>
       <td>Bad PR and brand damage risks due to several reasons such as Inadequate monitoring of customer touchpoint and improper anticipation, like the situation that company been through due coronavirus </td>
       <td bgcolor="red">25</td>
-      <td bgcolor="#ff8c00">15</td>
+      <td bgcolor="yellow">12</td>
       <td bgcolor="yellow">8</td>
       <td >2011/04/25</td>
 
@@ -514,528 +514,533 @@ Also revenue leaks due to affiliator fraud can cause financial loss to DK</td>
  {% include 'base/corejs.html' %}
 
 <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
+    $(document).ready(function () {
+        $().ready(function () {
+            $sidebar = $('.sidebar');
 
-        $sidebar_img_container = $sidebar.find('.sidebar-background');
+            $sidebar_img_container = $sidebar.find('.sidebar-background');
 
-        $full_page = $('.full-page');
+            $full_page = $('.full-page');
 
-        $sidebar_responsive = $('body > .navbar-collapse');
+            $sidebar_responsive = $('body > .navbar-collapse');
 
-        window_width = $(window).width();
+            window_width = $(window).width();
 
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-            $('.fixed-plugin .dropdown').addClass('open');
-          }
+            if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                    $('.fixed-plugin .dropdown').addClass('open');
+                }
 
-        }
-
-        $('.fixed-plugin a').click(function(event) {
-          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
             }
-          }
-        });
 
-        $('.fixed-plugin .active-color span').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-color', new_color);
-          }
-
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
-
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .background-color .badge').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('background-color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-background-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .img-holder').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).parent('li').siblings().removeClass('active');
-          $(this).parent('li').addClass('active');
-
-
-          var new_image = $(this).find("img").attr('src');
-
-          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function() {
-              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-              $sidebar_img_container.fadeIn('fast');
+            $('.fixed-plugin a').click(function (event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else if (window.event) {
+                        window.event.cancelBubble = true;
+                    }
+                }
             });
-          }
 
-          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+            $('.fixed-plugin .active-color span').click(function () {
+                $full_page_background = $('.full-page-background');
 
-            $full_page_background.fadeOut('fast', function() {
-              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-              $full_page_background.fadeIn('fast');
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+
+                var new_color = $(this).data('color');
+
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-color', new_color);
+                }
+
+                if ($full_page.length != 0) {
+                    $full_page.attr('filter-color', new_color);
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.attr('data-color', new_color);
+                }
             });
-          }
 
-          if ($('.switch-sidebar-image input:checked').length == 0) {
-            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+            $('.fixed-plugin .background-color .badge').click(function () {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
 
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-          }
+                var new_color = $(this).data('background-color');
 
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-          }
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-background-color', new_color);
+                }
+            });
+
+            $('.fixed-plugin .img-holder').click(function () {
+                $full_page_background = $('.full-page-background');
+
+                $(this).parent('li').siblings().removeClass('active');
+                $(this).parent('li').addClass('active');
+
+
+                var new_image = $(this).find("img").attr('src');
+
+                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    $sidebar_img_container.fadeOut('fast', function () {
+                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                        $sidebar_img_container.fadeIn('fast');
+                    });
+                }
+
+                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                    $full_page_background.fadeOut('fast', function () {
+                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        $full_page_background.fadeIn('fast');
+                    });
+                }
+
+                if ($('.switch-sidebar-image input:checked').length == 0) {
+                    var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                    $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                }
+            });
+
+            $('.switch-sidebar-image input').change(function () {
+                $full_page_background = $('.full-page-background');
+
+                $input = $(this);
+
+                if ($input.is(':checked')) {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar_img_container.fadeIn('fast');
+                        $sidebar.attr('data-image', '#');
+                    }
+
+                    if ($full_page_background.length != 0) {
+                        $full_page_background.fadeIn('fast');
+                        $full_page.attr('data-image', '#');
+                    }
+
+                    background_image = true;
+                } else {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar.removeAttr('data-image');
+                        $sidebar_img_container.fadeOut('fast');
+                    }
+
+                    if ($full_page_background.length != 0) {
+                        $full_page.removeAttr('data-image', '#');
+                        $full_page_background.fadeOut('fast');
+                    }
+
+                    background_image = false;
+                }
+            });
+
+            $('.switch-sidebar-mini input').change(function () {
+                $body = $('body');
+
+                $input = $(this);
+
+                if (md.misc.sidebar_mini_active == true) {
+                    $('body').removeClass('sidebar-mini');
+                    md.misc.sidebar_mini_active = false;
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                } else {
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                    setTimeout(function () {
+                        $('body').addClass('sidebar-mini');
+
+                        md.misc.sidebar_mini_active = true;
+                    }, 300);
+                }
+
+                // we simulate the window Resize so the charts will get updated in realtime.
+                var simulateWindowResize = setInterval(function () {
+                    window.dispatchEvent(new Event('resize'));
+                }, 180);
+
+                // we stop the simulation of Window Resize after the animations are completed
+                setTimeout(function () {
+                    clearInterval(simulateWindowResize);
+                }, 1000);
+
+            });
         });
-
-        $('.switch-sidebar-image input').change(function() {
-          $full_page_background = $('.full-page-background');
-
-          $input = $(this);
-
-          if ($input.is(':checked')) {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar_img_container.fadeIn('fast');
-              $sidebar.attr('data-image', '#');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page_background.fadeIn('fast');
-              $full_page.attr('data-image', '#');
-            }
-
-            background_image = true;
-          } else {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar.removeAttr('data-image');
-              $sidebar_img_container.fadeOut('fast');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page.removeAttr('data-image', '#');
-              $full_page_background.fadeOut('fast');
-            }
-
-            background_image = false;
-          }
-        });
-
-        $('.switch-sidebar-mini input').change(function() {
-          $body = $('body');
-
-          $input = $(this);
-
-          if (md.misc.sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            md.misc.sidebar_mini_active = false;
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-          } else {
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-            setTimeout(function() {
-              $('body').addClass('sidebar-mini');
-
-              md.misc.sidebar_mini_active = true;
-            }, 300);
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-
-        });
-      });
     });
-  </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
+</script>
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
 
     });
-  </script>
+</script>
 <script>
 
     function createChart(id, type, options) {
-      var data = {
-        labels: ['Very High Risks','High Risk','Medium Risk','Low Risk'],
-        datasets: [
-          {
-            label: 'Total Risk',
-            data: [1,29 ,50, 13],
-            backgroundColor: [
-              '#ff0000',
-                '#ffc000',
-              '#ffff00',
-              '#00ff00'
+        var data = {
+            labels: ['Very High Risks', 'High Risk', 'Medium Risk', 'Low Risk'],
+            datasets: [
+                {
+                    label: 'Total Risk',
+                    data: [1, 28, 51, 13],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ffc000',
+                        '#ffff00',
+                        '#00ff00'
+                    ]
+                }
             ]
-          }
-        ]
-      };
+        };
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['doughnut'].forEach(function (type) {
-      createChart(type + '-canvas1', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: true
-        },
-        plugins: {
-          labels: {
-            render: 'value'
-          }
-        }
-      });
+        createChart(type + '-canvas1', type, {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true
+            },
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
-  </script>
+</script>
 
 <script>
 
     function createChart(id, type, options) {
-      var data = {labels: ['Tech', 'Financial', 'HR','BD','Commercial','Marketing','Legal','Operation','CX'],
-        datasets: [
-          {
-            label: 'Very High Risk',
-            data: [0, 0, 0,0,0,0,0,1,0],
-            backgroundColor: [
-              '#ff0000',
-              '#ff0000',
-              '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000'
+        var data = {
+            labels: ['Tech', 'Financial', 'HR', 'BD', 'Commercial', 'Marketing', 'Legal', 'Operation', 'CX'],
+            datasets: [
+                {
+                    label: 'Very High Risk',
+                    data: [0, 0, 0, 0, 0, 0, 0, 1, 0],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000'
+
+                    ]
+                },
+                {
+                    label: 'High Risk',
+                    data: [3, 4, 1, 4, 6, 1, 2, 2, 0],
+                    backgroundColor: [
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000'
+
+                    ]
+                },
+                {
+                    label: 'Medium Risk',
+                    data: [6, 1, 7, 2, 8, 4, 7, 11, 1],
+                    backgroundColor: [
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00'
+                    ]
+                },
+                {
+                    label: 'Low Risk',
+                    data: [3, 0, 4, 0, 1, 4, 0, 2, 0],
+                    backgroundColor: [
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                    ]
+                },
+                {
+                    label: 'Total',
+                    data: [12, 5, 12, 7, 15, 9, 9, 16, 1],
+                    backgroundColor: [
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+                        '#0055ff',
+
+                    ]
+                },
 
             ]
-          },
-                      {
-            label: 'High Risk',
-            data: [3,4, 1,4,6,1,2,2,1],
-            backgroundColor: [
-              '#ffc000',
-              '#ffc000',
-              '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000'
-
-            ]
-          },
-            {
-            label: 'Medium Risk',
-            data: [6, 1, 7,2,8,4,7,11,0],
-            backgroundColor: [
-              '#ffff00',
-              '#ffff00',
-              '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00'
-            ]
-          },
-            {
-            label: 'Low Risk',
-            data: [3, 0, 4,0,1,4,0,2,0],
-            backgroundColor: [
-              '#00ff00',
-              '#00ff00',
-              '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-            ]
-          },
-                        {
-            label: 'Total',
-            data: [12, 5, 12,7,15,9,9,16,1],
-            backgroundColor: [
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-              '#0055ff',
-
-            ]
-          },
-
-       ]
-      };
+        };
 
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['bar'].forEach(function (type) {
         createChart(type + '-canvas2', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          labels: {
-              render: 'value'
-          }
-        }
-      });
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
 
 
-  </script>
+</script>
 
 
 <script>
 
     function createChart1(id, type, options) {
-      var data = {labels: ['Tech', 'Financial', 'HR','BD','Commercial','Marketing','Legal','Operation','CX'],
-        datasets: [
-          {
-            label: 'Over Due',
-            data: [0, 0, 0,0,0,0,0,0,0],
-            backgroundColor: [
-              '#ff0000',
-              '#ff0000',
-              '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000'
+        var data = {
+            labels: ['Tech', 'Financial', 'HR', 'BD', 'Commercial', 'Marketing', 'Legal', 'Operation', 'CX'],
+            datasets: [
+                {
+                    label: 'Over Due',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: [
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+                        '#d2514b',
+
+
+                    ]
+                },
+                {
+                    label: 'Open',
+                    data: [26, 14, 17, 22, 25, 17, 2, 25, 1],
+                    backgroundColor: [
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+                        '#fade05',
+
+
+                    ]
+                },
+                {
+                    label: 'Closed',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: [
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+                        '#8dcbf8',
+
+                    ]
+                },
+                {
+                    label: 'Total',
+                    data: [26, 14, 17, 22, 25, 17, 2, 25, 1],
+                    backgroundColor: [
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+                        '#2c48db',
+
+
+                    ]
+                },
 
             ]
-          },
-                      {
-            label: 'Open',
-            data: [26, 14, 17,22,25,17,2,25,1],
-            backgroundColor: [
-              '#fa7200',
-              '#fa7200',
-              '#fa7200',
-                '#fa7200',
-                '#fa7200',
-                '#fa7200',
-                '#fa7200',
-                '#fa7200',
-                '#fa7200'
-
-            ]
-          },
-            {
-            label: 'Closed',
-            data: [0, 0, 0,0,0,0,0,0,0],
-            backgroundColor: [
-              '#018320',
-              '#018320',
-              '#018320',
-                '#018320',
-                '#018320',
-                '#018320',
-                '#018320',
-                '#018320',
-                '#018320'
-            ]
-          },
-            {
-            label: 'Total',
-            data: [26, 14, 17,22,25,17,2,25,1],
-            backgroundColor: [
-              '#2c48db',
-              '#2c48db',
-              '#2c48db',
-                '#2c48db',
-                '#2c48db',
-                '#2c48db',
-                '#2c48db',
-                '#2c48db',
-                '#2c48db',
-            ]
-          },
-
-       ]
-      };
+        };
 
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['bar'].forEach(function (type) {
         createChart1(type + '-canvas3', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          labels: {
-              render: 'value'
-          }
-        }
-      });
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
-{#{#}
-{#            render: false,#}
-{#            fontColor: ['black', 'black','black','black','black','black','black','black'],#}
-{#            precision: 0#}
-{#          }#}
+    {#{#}
+    {#            render: false,#}
+    {#            fontColor: ['black', 'black','black','black','black','black','black','black'],#}
+    {#            precision: 0#}
+    {#          }#}
 
-  </script>
+</script>
 <script>
 
     function createChart2(id, type, options) {
-      var data = {labels: ['Tech', 'Financial', 'HR','BD','Commercial','Marketing','Legal','Operation','CX'],
-        datasets: [
-          {
-            label: 'Very High Risks',
-            data: [0,0, 0,0,0,0,0,1,0],
-              fill: true,
+        var data = {
+            labels: ['Tech', 'Financial', 'HR', 'BD', 'Commercial', 'Marketing', 'Legal', 'Operation', 'CX'],
+            datasets: [
+                {
+                    label: 'Very High Risks',
+                    data: [0, 0, 0, 0, 0, 0, 0, 1, 0],
+                    fill: true,
                     backgroundColor: 'rgba(255,99,132,0.2)',
                     borderColor: 'rgb(255, 99, 132)',
                     pointBackgroundColor: 'rgb(255, 99, 132)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(255, 99, 132)'
-          },
-                      {
-            label: 'High Risks',
-            data: [3,4, 1,4,6,1,2,2,1],
-            fill: true,
-                   fill: true,
+                },
+                {
+                    label: 'High Risks',
+                    data: [3, 4, 1, 4, 6, 1, 2, 2, 0],
+                    fill: true,
+                    fill: true,
                     backgroundColor: 'rgba(255,192,0,0.2)',
                     borderColor: 'rgb(255,192,0)',
                     pointBackgroundColor: 'rgb(255,192,0)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(255,192,0)'
-          },
-            {
-            label: 'Medium Risks',
-            data: [6, 1, 7,2,8,4,7,11,0],
-            fill: true,
+                },
+                {
+                    label: 'Medium Risks',
+                    data: [6, 1, 7, 2, 8, 4, 7, 11, 1],
+                    fill: true,
                     backgroundColor: 'rgba(255,255,0,0.2)',
                     borderColor: 'rgb(255,255,0)',
                     pointBackgroundColor: 'rgb(255,255,0)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(255,255,0)'
-          },
-            {
-            label: 'Low Risks',
-            data: [3, 0, 4,0,1,4,0,2,0],
-             fill: true,
+                },
+                {
+                    label: 'Low Risks',
+                    data: [3, 0, 4, 0, 1, 4, 0, 2, 0],
+                    fill: true,
                     backgroundColor: 'rgba(0, 255, 0, 0.2)',
                     borderColor: 'rgb(0, 255, 0)',
                     pointBackgroundColor: 'rgb(0, 255, 0)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(0, 255, 0)'
-          },
-            {
-            label: 'Total Risks',
-            data: [12, 5, 12,7,15,9,9,16,1],
-             fill: true,
+                },
+                {
+                    label: 'Total Risks',
+                    data: [12, 5, 12, 7, 15, 9, 9, 16, 1],
+                    fill: true,
                     backgroundColor: 'rgb(1,68,177,0.2)',
                     borderColor: 'rgb(1,68,177)',
                     pointBackgroundColor: 'rgb(1,68,177)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(1,68,177)'
-          },
+                },
 
-       ]
-      };
+            ]
+        };
 
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['radar'].forEach(function (type) {
         createChart2(type + '-canvas3', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          labels: {
-              render: 'value'
-          }
-        }
-      });
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
-{#{#}
-{#            render: false,#}
-{#            fontColor: ['black', 'black','black','black','black','black','black','black'],#}
-{#            precision: 0#}
-{#          }#}
+    {#{#}
+    {#            render: false,#}
+    {#            fontColor: ['black', 'black','black','black','black','black','black','black'],#}
+    {#            precision: 0#}
+    {#          }#}
 
-  </script>
-
-
-
-
+</script>
 
 
 <!-- Scatter Chart -->
@@ -1043,64 +1048,64 @@ Also revenue leaks due to affiliator fraud can cause financial loss to DK</td>
 <!-- sortable table -->
 <script>
     $(document).ready(function () {
-    $('#dtVerticalScrollExample').DataTable({
-    "scrollY": "200px",
-    "scrollCollapse": true,
-    });
-    $('.dataTables_length').addClass('bs-select');
+        $('#dtVerticalScrollExample').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
     });
 </script>
 
 <script>
     $(document).ready(function () {
-    $('#dtVerticalScrollExample2').DataTable({
-    "scrollY": "200px",
-    "scrollCollapse": true,
-    });
-    $('.dataTables_length').addClass('bs-select');
+        $('#dtVerticalScrollExample2').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
     });
 </script>
 <script>
 
     function createChart4(id, type, options) {
-      var data = {
-        labels: ['Very High Risks','High Risk','Medium Risk','Low Risk'],
-        datasets: [
-          {
-            label: 'Total Risk',
-            data: [2,20 ,30, 5],
-            backgroundColor: [
-              '#ff0000',
-                '#9beae0',
-              '#8dcbf8',
-              '#ddbbdd'
+        var data = {
+            labels: ['Very High Risks', 'High Risk', 'Medium Risk', 'Low Risk'],
+            datasets: [
+                {
+                    label: 'Total Risk',
+                    data: [2, 20, 30, 5],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ffc000',
+                        '#ffff00',
+                        '#00ff00'
+                    ]
+                }
             ]
-          }
-        ]
-      };
+        };
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['doughnut'].forEach(function (type) {
-      createChart4(type + '-canvas4', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: true
-        },
-        plugins: {
-          labels: {
-            render: 'value'
-          }
-        }
-      });
+        createChart4(type + '-canvas4', type, {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true
+            },
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
-  </script>
+</script>
 <!--
 <script>
     var canvas = document.createElement('canvas');
@@ -1173,138 +1178,138 @@ Also revenue leaks due to affiliator fraud can cause financial loss to DK</td>
 <script>
 
     function createChart9(id, type, options) {
-      var data = {labels: ['Total'],
-        datasets: [
-          {
-            label: 'very High Risk',
-            data: [0],
-            backgroundColor: [
-              '#ff0000',
-              '#ff0000',
-              '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000',
-                '#ff0000'
+        var data = {
+            labels: ['Total'],
+            datasets: [
+                {
+                    label: 'Very High Risk',
+                    data: [0],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000',
+                        '#ff0000'
+
+                    ]
+                },
+                {
+                    label: 'High Risk',
+                    data: [2],
+                    backgroundColor: [
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000',
+                        '#ffc000'
+
+                    ]
+                },
+                {
+                    label: 'Medium Risk',
+                    data: [5],
+                    backgroundColor: [
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00',
+                        '#ffff00'
+                    ]
+                },
+                {
+                    label: 'Low Risk',
+                    data: [4],
+                    backgroundColor: [
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                        '#00ff00',
+                    ]
+                },
 
             ]
-          },
-                      {
-            label: 'High Risk',
-            data: [2],
-            backgroundColor: [
-              '#ffc000',
-              '#ffc000',
-              '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000',
-                '#ffc000'
-
-            ]
-          },
-            {
-            label: 'Medium Risk',
-            data: [5],
-            backgroundColor: [
-              '#ffff00',
-              '#ffff00',
-              '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00',
-                '#ffff00'
-            ]
-          },
-            {
-            label: 'Low Risk',
-            data: [4],
-            backgroundColor: [
-              '#00ff00',
-              '#00ff00',
-              '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-                '#00ff00',
-            ]
-          },
-
-       ]
-      };
+        };
 
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['bar'].forEach(function (type) {
         createChart9(type + '-canvas9', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          labels: {
-              render: 'value'
-          }
-        }
-      });
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
 
-  </script>
+</script>
 
 <script>
 
     function createChart99(id, type, options) {
-      var data = {
-        labels: ['For Very High Risks','For High Risk','For Medium Risk','For Low Risk'],
-        datasets: [
-          {
-            label: 'Total Risk',
-            data: [0,8 ,5, 4],
-            backgroundColor: [
-              '#ff0000',
-                '#9beae0',
-              '#8dcbf8',
-              '#ddbbdd'
+        var data = {
+            labels: ['For Very High Risks', 'For High Risk', 'For Medium Risk', 'For Low Risk'],
+            datasets: [
+                {
+                    label: 'Total Risk',
+                    data: [0, 8, 5, 4],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ffc000',
+                        '#ffff00',
+                        '#00ff00'
+                    ]
+                }
             ]
-          }
-        ]
-      };
+        };
 
-      new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-      });
+        new Chart(document.getElementById(id), {
+            type: type,
+            data: data,
+            options: options
+        });
     }
 
     ['doughnut'].forEach(function (type) {
-      createChart99(type + '-canvas99', type, {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: true
-        },
-        plugins: {
-          labels: {
-            render: 'value'
-          }
-        }
-      });
+        createChart99(type + '-canvas99', type, {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true
+            },
+            plugins: {
+                labels: {
+                    render: 'value'
+                }
+            }
+        });
     });
-  </script>
-
+</script>
 
 <!-- Nabaaar -->
 
