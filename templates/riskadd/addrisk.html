@@ -106,6 +106,10 @@
       button:hover {
       background-color: #0666a3;
       }
+      .errorlist {
+      list-style: none;
+      padding : 0
+      }
     </style>
 
 
@@ -125,30 +129,68 @@
 
 
 
-
-    <div class="testbox">
+    <div class="card">
+      <div class="card-header card-header-rose">
+            <h4 class="card-title">Risk Assessment</h4>
+            <p class="card-category"> </p>
+        </div>
       <form  method="POST">
           {% csrf_token %}
 
+        <div class="container-fluid mt-auto">
+            <div class="row">
+            <div class="item col-sm-6">
+                <p>Added By</p>
+                <div>
+                    {{ form.createdBy }}
+                </div>
+            </div>
 
-
-
-        <h1>Risk Assessment Form</h1>
-
-                   <div class="help-block">
-                       <p class="errorlist">{{ form.errors }}</p>
-                   </div>
-
-
-        <div class="item">
-          <p>Added By</p>
-          <div>
-            {{ form.createdBy }}
-          </div>
+            <div class="item col-sm-6">
+                <p>Division</p>
+                {{ form.division }}
+                <span class="help-block">{{ form.errors.division }}</span>
+            </div>
         </div>
-        <div class="item">
-          <p>Division</p>
-          {{ form.division }}
+     
+          <div class="row">
+              <div class="item col-sm-6">
+                <p>Key Risk Issue</p>
+                  {{ form.riskname }}
+                  <span class="help-block">{{ form.errors.riskname }}</span>
+              </div>
+              <div class="item col-sm-6">
+                <p>Risk Cause</p>
+                {{ form.risknameCause }}
+                <span class="help-block">{{ form.errors.risknameCause }}</span>
+              </div>
+          </div>
+
+          <div class="row">
+                <div class="item col-sm-6">
+                    <p>Risk Effect</p>
+                    {{ form.riksEffect }}
+                    <span class="help-block">{{ form.errors.riksEffect }}</span>
+                </div>
+                    <div class="item col-sm-6">
+                    <p>Inherent Rating</p>
+                    {{ form.inherent }}
+                    <span class="help-block">{{ form.errors.inherent }}</span>
+                </div>
+          </div>
+
+          <div class="row">
+                  <div class="item col-sm-6">
+                    <p>Residual Rating</p>
+                    {{ form.recidual }}
+                    <span class="help-block">{{ form.errors.recidual }}</span>
+                  </div>
+                <div class="item col-sm-6">
+                  <p>Target Rating</p>
+                  {{ form.target }}
+                  <span class="help-block">{{ form.errors.target }}</span>
+               </div>
+          </div>
         </div>
           <!-- Date added
         <div class="item">
@@ -157,34 +199,11 @@
           <i class="fas fa-calendar-alt"></i>
         </div>
         -->
-        <div class="item">
-          <p>Key Risk Issue</p>
-         {{ form.riskname }}
-        </div>
-        <div class="item">
-          <p>Risk Cause</p>
-          {{ form.risknameCause }}
-        </div>
-        <div class="item">
-          <p>Risk Effect</p>
-          {{ form.riksEffect }}
-        </div>
-          <div class="item">
-          <p>Inherent Rating</p>
-          {{ form.inherent }}
-        </div>
-          <div class="item">
-          <p>Residual Rating</p>
-          {{ form.recidual }}
-        </div>
-           <div class="item">
-          <p>Target Rating</p>
-          {{ form.target }}
-        </div>
+    
           {{ form.has_error }}
 
-        <div class="btn-block">
-          <button type="submit" >Submit</button>
+        <div class="row col-12">
+             <button type="submit" class="btn btn-rose btn-floating mx-1">Submit</button>
         </div>
       </form>
     </div>
