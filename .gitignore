@@ -1,0 +1,3 @@
+venv $ git rm --cached debug.log rm venv $ git commit -m Start ignoring venv
+venv $ git rm --cached debug.log rm venv $ git commit -m Start ignoring venv
+venv $ git rm --cached venv rm venv $ git commit -m Start ignoring venv
